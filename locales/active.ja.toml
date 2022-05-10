@@ -219,3 +219,6 @@
 "commands.stats.description" = "AutoMuteUsで遊んだゲームの統計を閲覧・削除する"
 "commands.premium.description" = "AutoMuteUs Premiumの詳細を見る"
 "commands.debug.description" = "AutoMuteUsのデバッグ情報を閲覧・消去する"
+
+"commands.ranking.title" = "ランキング"
+"commands.ranking.win" = "勝率ランキング"

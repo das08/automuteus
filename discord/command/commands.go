@@ -2,6 +2,7 @@ package command
 
 import (
 	"fmt"
+
 	"github.com/automuteus/utils/pkg/discord"
 	"github.com/automuteus/utils/pkg/game"
 	"github.com/automuteus/utils/pkg/settings"
@@ -33,6 +34,7 @@ var All = []*discordgo.ApplicationCommand{
 	&Stats,
 	&Premium,
 	&Debug,
+	&Ranking,
 }
 
 func DeadlockGameStateResponse(command string, sett *settings.GuildSettings) *discordgo.InteractionResponse {
