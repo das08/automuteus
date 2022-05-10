@@ -2,7 +2,6 @@ package command
 
 import (
 	"bytes"
-	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -32,7 +31,6 @@ func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo
 		Author:      nil,
 	}
 	fields := make([]*discordgo.MessageEmbedField, 1)
-	fmt.Println("====", buf.String())
 	fields[0] = &discordgo.MessageEmbedField{
 		Name: sett.LocalizeMessage(&i18n.Message{
 			ID:    "commands.ranking.win",

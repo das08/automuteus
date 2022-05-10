@@ -467,10 +467,11 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 			for placement, ranking := range rankings {
 				userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
 				winRate := ranking.WinRate
-				buf.WriteString(fmt.Sprintf("%s | %s | WR:%.2f", generateRankString(placement+1), userName, winRate))
+				win := ranking.WonGames
+				total := ranking.PlayedGames
+				buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
 				buf.WriteByte('\n')
 			}
-			fmt.Println("====", buf.String())
 			if len(rankings) == 0 {
 				buf.WriteString("No Data")
 			}
@@ -758,6 +759,6 @@ func generateRankString(placement int) string {
 	case 3:
 		return "🥉"
 	default:
-		return strconv.Itoa(placement)
+		return strconv.Itoa(placement) + "."
 	}
 }
