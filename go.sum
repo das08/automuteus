@@ -23,8 +23,6 @@ github.com/armon/circbuf v0.0.0-20150827004946-bbbad097214e/go.mod h1:3U/XgcO3hC
 github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da/go.mod h1:Q73ZrmVTwzkszR9V5SSuryQ31EELlFMUz1kKyl939pY=
 github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
 github.com/aryann/difflib v0.0.0-20170710044230-e206f873d14a/go.mod h1:DAHtR1m6lCRdSC2Tm3DSWRPvIPr6xNKyeHdqDQSQT+A=
-github.com/automuteus/utils v0.3.2 h1:+r598HkMEYXmz9RjDSRamVgObxVJE9EayhSf7XdBulc=
-github.com/automuteus/utils v0.3.2/go.mod h1:A8zWmP3FEG1Aanz/9msstVMswIfkx1nxY59gNfRztXw=
 github.com/aws/aws-lambda-go v1.13.3/go.mod h1:4UKl9IzQMoD+QF79YdCuzCwp8VbmG4VAQwij/eHl5CU=
 github.com/aws/aws-sdk-go v1.27.0/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
 github.com/aws/aws-sdk-go-v2 v0.18.0/go.mod h1:JWVYvqSMppoMJC0x5wdwiImzgXTI9FuZwxzkQq9wy+g=
@@ -61,6 +59,14 @@ github.com/coreos/go-systemd v0.0.0-20190719114852-fd7a80b32e1f/go.mod h1:F5haX7
 github.com/coreos/pkg v0.0.0-20160727233714-3ac0863d7acf/go.mod h1:E3G3o1h8I7cfcXa63jLwjI0eiQQMgzzUDFVpN/nH/eA=
 github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/creack/pty v1.1.7/go.mod h1:lj5s0c3V2DBrqTV7llrYr5NG6My20zk30Fl46Y7DoTY=
+github.com/das08/utils v0.3.2 h1:+r598HkMEYXmz9RjDSRamVgObxVJE9EayhSf7XdBulc=
+github.com/das08/utils v0.3.2/go.mod h1:A8zWmP3FEG1Aanz/9msstVMswIfkx1nxY59gNfRztXw=
+github.com/das08/utils v0.3.3-0.20220510144136-70275b5c6d9f h1:Acxci0lFOvxMO9bkUMM9ZXfB2izk6Xlv40K7u20UrMM=
+github.com/das08/utils v0.3.3-0.20220510144136-70275b5c6d9f/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
+github.com/das08/utils v0.3.3-0.20220510144313-e4134b6769ca h1:UK728UNPyZS3o33UvdbzB/xmbdMWWQ78qbG+oLxu0kI=
+github.com/das08/utils v0.3.3-0.20220510144313-e4134b6769ca/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
+github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506 h1:1aLqtBgkhHLfXypco6Dc/mUyvRmtvfYwPZ0ko0M7Cjk=
+github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

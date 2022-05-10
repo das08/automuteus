@@ -2,9 +2,9 @@ package discord
 
 import (
 	"context"
-	"github.com/automuteus/utils/pkg/premium"
-	"github.com/automuteus/utils/pkg/settings"
-	"github.com/automuteus/utils/pkg/task"
+	"github.com/das08/utils/pkg/premium"
+	"github.com/das08/utils/pkg/settings"
+	"github.com/das08/utils/pkg/task"
 	"github.com/bsm/redislock"
 	"github.com/bwmarrin/discordgo"
 	"log"

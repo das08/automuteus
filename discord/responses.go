@@ -4,15 +4,15 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/automuteus/automuteus/discord/command"
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/settings"
+	"github.com/das08/utils/pkg/discord"
+	"github.com/das08/utils/pkg/settings"
 	"os"
 	"strings"
 	"time"
 
 	"github.com/automuteus/automuteus/amongus"
 	"github.com/automuteus/automuteus/discord/setting"
-	"github.com/automuteus/utils/pkg/game"
+	"github.com/das08/utils/pkg/game"
 	"github.com/bwmarrin/discordgo"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )

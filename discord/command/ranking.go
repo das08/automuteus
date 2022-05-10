@@ -3,11 +3,10 @@ package command
 import (
 	"bytes"
 	"fmt"
-	"time"
-
-	"github.com/automuteus/utils/pkg/settings"
 	"github.com/bwmarrin/discordgo"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"time"
 )
 
 var Ranking = discordgo.ApplicationCommand{
@@ -15,7 +14,7 @@ var Ranking = discordgo.ApplicationCommand{
 	Description: "Show stats ranking of this guild",
 }
 
-func RankingResponse(rankingCount int, sett *settings.GuildSettings) *discordgo.InteractionResponse {
+func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo.InteractionResponse {
 	embed := discordgo.MessageEmbed{
 		URL:  "",
 		Type: "",
@@ -33,11 +32,7 @@ func RankingResponse(rankingCount int, sett *settings.GuildSettings) *discordgo.
 		Author:      nil,
 	}
 	fields := make([]*discordgo.MessageEmbedField, 1)
-	buf := bytes.NewBuffer([]byte{})
-	for i := 1; i < rankingCount; i++ {
-		buf.WriteString(fmt.Sprintf("🥇 | %s", "name"))
-		buf.WriteByte('\n')
-	}
+	fmt.Println("====", buf.String())
 	fields[0] = &discordgo.MessageEmbedField{
 		Name: sett.LocalizeMessage(&i18n.Message{
 			ID:    "commands.ranking.win",

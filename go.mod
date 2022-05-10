@@ -3,7 +3,6 @@ module github.com/automuteus/automuteus
 go 1.18
 
 require (
-	github.com/automuteus/utils v0.3.2
 	github.com/bsm/redislock v0.7.1
 	github.com/bwmarrin/discordgo v0.24.0
 	github.com/go-redis/redis/v8 v8.8.0
@@ -13,10 +12,13 @@ require (
 	github.com/top-gg/go-dbl v0.0.0-20201116001615-e844586b1159
 )
 
+//replace github.com/das08/utils => ../utils
+
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
+	github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/georgysavva/scany v0.2.7 // indirect

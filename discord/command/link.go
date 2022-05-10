@@ -1,8 +1,8 @@
 package command
 
 import (
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/settings"
+	"github.com/das08/utils/pkg/discord"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/bwmarrin/discordgo"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"strings"

@@ -2,16 +2,16 @@ package discord
 
 import (
 	redis_common "github.com/automuteus/automuteus/common"
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/settings"
+	"github.com/das08/utils/pkg/discord"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"log"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/automuteus/utils/pkg/premium"
-	"github.com/automuteus/utils/pkg/task"
+	"github.com/das08/utils/pkg/premium"
+	"github.com/das08/utils/pkg/task"
 	"github.com/bsm/redislock"
 
 	"github.com/bwmarrin/discordgo"

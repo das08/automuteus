@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"github.com/automuteus/automuteus/metrics"
 	"github.com/automuteus/automuteus/storage"
-	"github.com/automuteus/utils/pkg/rediskey"
+	"github.com/das08/utils/pkg/rediskey"
 	"github.com/bsm/redislock"
 	"github.com/bwmarrin/discordgo"
 	"github.com/go-redis/redis/v8"

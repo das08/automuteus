@@ -1,10 +1,12 @@
 package discord
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"log"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -12,10 +14,10 @@ import (
 	"github.com/automuteus/automuteus/discord/command"
 	"github.com/automuteus/automuteus/discord/setting"
 	"github.com/automuteus/automuteus/metrics"
-	"github.com/automuteus/utils/pkg/discord"
-	"github.com/automuteus/utils/pkg/premium"
-	"github.com/automuteus/utils/pkg/settings"
 	"github.com/bwmarrin/discordgo"
+	"github.com/das08/utils/pkg/discord"
+	"github.com/das08/utils/pkg/premium"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
@@ -460,7 +462,19 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 			}
 
 		case command.Ranking.Name:
-			return command.RankingResponse(5, sett)
+			rankings := bot.PostgresInterface.WinRateRanking(i.GuildID)
+			buf := bytes.NewBuffer([]byte{})
+			for placement, ranking := range rankings {
+				userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
+				winRate := ranking.WinRate
+				buf.WriteString(fmt.Sprintf("%s | %s | WR:%.2f", generateRankString(placement+1), userName, winRate))
+				buf.WriteByte('\n')
+			}
+			fmt.Println("====", buf.String())
+			if len(rankings) == 0 {
+				buf.WriteString("No Data")
+			}
+			return command.RankingResponse(buf, sett)
 
 		case command.Premium.Name:
 			premArg := command.GetPremiumParams(i.ApplicationCommandData().Options)
@@ -733,4 +747,17 @@ func checkPermissions(perm int64, perms []int64) (a int64) {
 		}
 	}
 	return
+}
+
+func generateRankString(placement int) string {
+	switch placement {
+	case 1:
+		return "🥇"
+	case 2:
+		return "🥈"
+	case 3:
+		return "🥉"
+	default:
+		return strconv.Itoa(placement)
+	}
 }

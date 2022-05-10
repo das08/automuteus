@@ -2,7 +2,7 @@ package setting
 
 import (
 	"fmt"
-	"github.com/automuteus/utils/pkg/settings"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"log"
 	"strconv"

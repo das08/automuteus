@@ -1,8 +1,8 @@
 package setting
 
 import (
-	"github.com/automuteus/utils/pkg/locale"
-	"github.com/automuteus/utils/pkg/settings"
+	"github.com/das08/utils/pkg/locale"
+	"github.com/das08/utils/pkg/settings"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
