@@ -36,7 +36,7 @@ services:
       - REDIS_ADDR=${AUTOMUTEUS_REDIS_ADDR}
       - GALACTUS_ADDR=${GALACTUS_ADDR}
       - POSTGRES_ADDR=${POSTGRES_ADDR}
-    stop_grace_period: ${STOP_GRACE_PERIOD:-2m}
+    stop_grace_period: 2m
     depends_on:
       - redis
       - galactus
