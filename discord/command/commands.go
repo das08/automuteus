@@ -124,6 +124,23 @@ func mapsToCommandChoices() []*discordgo.ApplicationCommandOptionChoice {
 	return choices
 }
 
+var RankingType = []string{
+	"all",
+	"crewmate",
+	"imposter",
+}
+
+func rankingCommandChoices() []*discordgo.ApplicationCommandOptionChoice {
+	var choices []*discordgo.ApplicationCommandOptionChoice
+	for _, types := range RankingType {
+		choices = append(choices, &discordgo.ApplicationCommandOptionChoice{
+			Name:  types,
+			Value: types,
+		})
+	}
+	return choices
+}
+
 func NoGameResponse(sett *settings.GuildSettings) *discordgo.InteractionResponse {
 	return PrivateResponse(
 		sett.LocalizeMessage(&i18n.Message{

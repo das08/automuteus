@@ -463,6 +463,22 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 
 		case command.Ranking.Name:
 			rankings := bot.PostgresInterface.WinRateRanking(i.GuildID)
+			//totalCrewmateGames := bot.PostgresInterface.NumGamesAsRoleOnServer(userID, guildID, int16(game.CrewmateRole))
+			//totalCrewmateGames := bot.PostgresInterface.NumWinsAsRoleOnServer(userID, guildID, int16(game.CrewmateRole))
+
+			fmt.Println("RANKINGS:", rankings)
+			switch i.ApplicationCommandData().Options[0].StringValue() {
+			case command.RankingType[0]:
+				fmt.Println("Ranking type:", command.RankingType[0])
+
+			case command.RankingType[1]:
+				fmt.Println("Ranking type:", command.RankingType[1])
+
+			case command.RankingType[2]:
+				fmt.Println("Ranking type:", command.RankingType[2])
+
+			}
+
 			buf := bytes.NewBuffer([]byte{})
 			for placement, ranking := range rankings {
 				userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)

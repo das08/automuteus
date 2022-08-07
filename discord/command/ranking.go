@@ -11,6 +11,15 @@ import (
 var Ranking = discordgo.ApplicationCommand{
 	Name:        "ranking",
 	Description: "Show stats ranking of this guild",
+	Options: []*discordgo.ApplicationCommandOption{
+		{
+			Type:        discordgo.ApplicationCommandOptionString,
+			Name:        "type",
+			Description: "Ranking Type",
+			Required:    true,
+			Choices:     rankingCommandChoices(),
+		},
+	},
 }
 
 func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo.InteractionResponse {
@@ -19,7 +28,7 @@ func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo
 		Type: "",
 		Title: sett.LocalizeMessage(&i18n.Message{
 			ID:    "commands.ranking.title",
-			Other: "Bot Info",
+			Other: "Ranking",
 		}),
 		Description: "",
 		Timestamp:   time.Now().Format(ISO8601),
