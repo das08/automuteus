@@ -490,6 +490,7 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 					ID:    "commands.ranking.all.win",
 					Other: "Win Rate Ranking(All)",
 				})
+				rankingName += "🎉"
 
 			case command.RankingType[1]:
 				fmt.Println("Ranking type:", command.RankingType[1])
@@ -512,6 +513,8 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 					ID:    "commands.ranking.crew.win",
 					Other: "Win Rate Ranking(Crewmate)",
 				})
+				emoji := bot.StatusEmojis[true][2].FormatForInline()
+				rankingName = fmt.Sprintf("%s%s%s", emoji, rankingName, emoji)
 
 			case command.RankingType[2]:
 				fmt.Println("Ranking type:", command.RankingType[2])
@@ -534,6 +537,8 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 					ID:    "commands.ranking.imposter.win",
 					Other: "Win Rate Ranking(Imposter)",
 				})
+				emoji := bot.StatusEmojis[true][0].FormatForInline()
+				rankingName = fmt.Sprintf("%s%s%s", emoji, rankingName, emoji)
 			}
 
 			return command.RankingResponse(buf, rankingName, sett)
