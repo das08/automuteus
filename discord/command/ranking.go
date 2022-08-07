@@ -22,7 +22,7 @@ var Ranking = discordgo.ApplicationCommand{
 	},
 }
 
-func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo.InteractionResponse {
+func RankingResponse(buf *bytes.Buffer, rankingName string, sett *settings.GuildSettings) *discordgo.InteractionResponse {
 	embed := discordgo.MessageEmbed{
 		URL:  "",
 		Type: "",
@@ -41,10 +41,7 @@ func RankingResponse(buf *bytes.Buffer, sett *settings.GuildSettings) *discordgo
 	}
 	fields := make([]*discordgo.MessageEmbedField, 1)
 	fields[0] = &discordgo.MessageEmbedField{
-		Name: sett.LocalizeMessage(&i18n.Message{
-			ID:    "commands.ranking.win",
-			Other: "Win Rate Ranking",
-		}),
+		Name:   rankingName,
 		Value:  buf.String(),
 		Inline: true,
 	}

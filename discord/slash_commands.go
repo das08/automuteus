@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -467,31 +468,75 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 			//totalCrewmateGames := bot.PostgresInterface.NumWinsAsRoleOnServer(userID, guildID, int16(game.CrewmateRole))
 
 			fmt.Println("RANKINGS:", rankings)
+			buf := bytes.NewBuffer([]byte{})
+			rankingName := ""
+
 			switch i.ApplicationCommandData().Options[0].StringValue() {
 			case command.RankingType[0]:
 				fmt.Println("Ranking type:", command.RankingType[0])
+				for placement, ranking := range rankings {
+					userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
+					winRate := ranking.WinRate
+					win := ranking.WonGames
+					total := ranking.PlayedGames
+					buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
+					buf.WriteByte('\n')
+				}
+				if len(rankings) == 0 {
+					buf.WriteString("No Data")
+				}
+
+				rankingName = sett.LocalizeMessage(&i18n.Message{
+					ID:    "commands.ranking.all.win",
+					Other: "Win Rate Ranking(All)",
+				})
 
 			case command.RankingType[1]:
 				fmt.Println("Ranking type:", command.RankingType[1])
+				sort.Slice(rankings, func(i, j int) bool {
+					return rankings[i].CrewWinRate > rankings[j].CrewWinRate
+				})
+				for placement, ranking := range rankings {
+					userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
+					winRate := ranking.CrewWinRate
+					win := ranking.CrewWonGames
+					total := ranking.PlayedCrewGames
+					buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
+					buf.WriteByte('\n')
+				}
+				if len(rankings) == 0 {
+					buf.WriteString("No Data")
+				}
+
+				rankingName = sett.LocalizeMessage(&i18n.Message{
+					ID:    "commands.ranking.crew.win",
+					Other: "Win Rate Ranking(Crewmate)",
+				})
 
 			case command.RankingType[2]:
 				fmt.Println("Ranking type:", command.RankingType[2])
+				sort.Slice(rankings, func(i, j int) bool {
+					return rankings[i].ImposterWinRate > rankings[j].ImposterWinRate
+				})
+				for placement, ranking := range rankings {
+					userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
+					winRate := ranking.ImposterWinRate
+					win := ranking.ImposterWonGames
+					total := ranking.PlayedImposterGames
+					buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
+					buf.WriteByte('\n')
+				}
+				if len(rankings) == 0 {
+					buf.WriteString("No Data")
+				}
 
+				rankingName = sett.LocalizeMessage(&i18n.Message{
+					ID:    "commands.ranking.imposter.win",
+					Other: "Win Rate Ranking(Imposter)",
+				})
 			}
 
-			buf := bytes.NewBuffer([]byte{})
-			for placement, ranking := range rankings {
-				userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
-				winRate := ranking.WinRate
-				win := ranking.WonGames
-				total := ranking.PlayedGames
-				buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
-				buf.WriteByte('\n')
-			}
-			if len(rankings) == 0 {
-				buf.WriteString("No Data")
-			}
-			return command.RankingResponse(buf, sett)
+			return command.RankingResponse(buf, rankingName, sett)
 
 		case command.Premium.Name:
 			premArg := command.GetPremiumParams(i.ApplicationCommandData().Options)
