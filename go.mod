@@ -18,7 +18,7 @@ require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
-	github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506 // indirect
+	github.com/das08/utils v0.3.3-0.20220807072345-38c575b0e890 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/georgysavva/scany v0.2.7 // indirect
