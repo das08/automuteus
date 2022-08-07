@@ -464,8 +464,6 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 
 		case command.Ranking.Name:
 			rankings := bot.PostgresInterface.WinRateRanking(i.GuildID)
-			//totalCrewmateGames := bot.PostgresInterface.NumGamesAsRoleOnServer(userID, guildID, int16(game.CrewmateRole))
-			//totalCrewmateGames := bot.PostgresInterface.NumWinsAsRoleOnServer(userID, guildID, int16(game.CrewmateRole))
 
 			fmt.Println("RANKINGS:", rankings)
 			buf := bytes.NewBuffer([]byte{})
@@ -490,7 +488,7 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 					ID:    "commands.ranking.all.win",
 					Other: "Win Rate Ranking(All)",
 				})
-				rankingName += "🎉"
+				rankingName = fmt.Sprintf("%s%s%s", "🎉", rankingName, "🎉")
 
 			case command.RankingType[1]:
 				fmt.Println("Ranking type:", command.RankingType[1])
