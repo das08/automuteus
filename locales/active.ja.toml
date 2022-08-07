@@ -221,6 +221,7 @@
 "commands.debug.description" = "AutoMuteUsのデバッグ情報を閲覧・消去する"
 
 "commands.ranking.title" = "ランキング"
+"commands.ranking.session.win" = "今日の勝率ランキング"
 "commands.ranking.all.win" = "総合勝率ランキング"
 "commands.ranking.crew.win" = "クルーメイト勝率ランキング"
 "commands.ranking.imposter.win" = "インポスター勝率ランキング"

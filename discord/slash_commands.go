@@ -537,6 +537,35 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 				})
 				emoji := bot.StatusEmojis[true][0].FormatForInline()
 				rankingName = fmt.Sprintf("%s%s%s", emoji, rankingName, emoji)
+
+			case command.RankingType[3]:
+				fmt.Println("Ranking type:", command.RankingType[3])
+				dgs := bot.RedisInterface.GetReadOnlyDiscordGameState(gsr)
+				if dgs != nil {
+					if !dgs.GameStateMsg.Exists() {
+						return command.NoGameResponse(sett)
+					}
+					fmt.Println("ConnectCode:", dgs.ConnectCode)
+					sessionRankings := bot.PostgresInterface.SessionWinRateRanking(i.GuildID, "7A980D56")
+					for placement, ranking := range sessionRankings {
+						userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
+						winRate := ranking.WinRate
+						win := ranking.WonGames
+						total := ranking.PlayedGames
+						buf.WriteString(fmt.Sprintf("%s %s %.1f%%(%d/%d)", generateRankString(placement+1), userName, winRate*100, win, total))
+						buf.WriteByte('\n')
+					}
+					if len(sessionRankings) == 0 {
+						buf.WriteString("No Data")
+					}
+
+					rankingName = sett.LocalizeMessage(&i18n.Message{
+						ID:    "commands.ranking.session.win",
+						Other: "Win Rate Ranking(Session)",
+					})
+					rankingName = fmt.Sprintf("%s%s%s", "🎉", rankingName, "🎉")
+				}
+
 			}
 
 			return command.RankingResponse(buf, rankingName, sett)

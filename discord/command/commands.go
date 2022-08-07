@@ -128,6 +128,7 @@ var RankingType = []string{
 	"all",
 	"crewmate",
 	"imposter",
+	"session",
 }
 
 func rankingCommandChoices() []*discordgo.ApplicationCommandOptionChoice {
