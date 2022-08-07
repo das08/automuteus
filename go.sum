@@ -69,6 +69,8 @@ github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506 h1:1aLqtBgkhHLfXypco
 github.com/das08/utils v0.3.3-0.20220510150129-d39003dcc506/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
 github.com/das08/utils v0.3.3-0.20220807072345-38c575b0e890 h1:zmVzwKloAZKK5/yLL/rnI3YxxRYxqZYr370pGw/uaw8=
 github.com/das08/utils v0.3.3-0.20220807072345-38c575b0e890/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
+github.com/das08/utils v0.3.3-0.20220807073314-5dfb6561259b h1:qu+bcTLHg6DH8weR14PYQnNBHCiARMasUC5pp3rIV6o=
+github.com/das08/utils v0.3.3-0.20220807073314-5dfb6561259b/go.mod h1:m/RJhAyBo3CNGJd8hgeNzdt1tMA0A8UiL/HRNc7aZ7g=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
