@@ -546,7 +546,8 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 						return command.NoGameResponse(sett)
 					}
 					fmt.Println("ConnectCode:", dgs.ConnectCode)
-					sessionRankings := bot.PostgresInterface.SessionWinRateRanking(i.GuildID, "7A980D56")
+					sessionRankings := bot.PostgresInterface.SessionWinRateRanking(i.GuildID, dgs.ConnectCode)
+					fmt.Println("SESSION RANKINGS:", sessionRankings)
 					for placement, ranking := range sessionRankings {
 						userName := bot.MentionWithCacheData(strconv.FormatUint(ranking.UserID, 10), i.GuildID, sett)
 						winRate := ranking.WinRate
@@ -563,7 +564,7 @@ func (bot *Bot) slashCommandHandler(s *discordgo.Session, i *discordgo.Interacti
 						ID:    "commands.ranking.session.win",
 						Other: "Win Rate Ranking(Session)",
 					})
-					rankingName = fmt.Sprintf("%s%s%s", "🎉", rankingName, "🎉")
+					rankingName = fmt.Sprintf("%s%s%s", "🎊", rankingName, "🎊")
 				}
 
 			}
