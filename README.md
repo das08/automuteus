@@ -22,8 +22,8 @@
     <a href="https://automuteus.crowdin.com/automuteus" alt="localize">
         <img alt="Localize" src="https://badges.crowdin.net/e/5eb1365b5fd16082e63cc54c33736adc/localized.svg">
     </a>
-    <a href="https://goreportcard.com/report/github.com/automuteus/automuteus" alt="Report Card">
-        <img src="https://goreportcard.com/badge/github.com/automuteus/automuteus" />
+    <a href="https://goreportcard.com/report/github.com/automuteus/automuteus/v8" alt="Report Card">
+        <img src="https://goreportcard.com/badge/github.com/automuteus/automuteus/v8" />
     </a>
 </p>
 
@@ -111,12 +111,15 @@ Help us translate the bot here:
 
 [![Crowdin](https://badges.crowdin.net/e/5eb1365b5fd16082e63cc54c33736adc/localized.svg)](https://automuteus.crowdin.com/automuteus)
 
-To extract strings for translation to `locales/en.toml`:
+To prepare any new strings for translation, first install goi18n v2.1.1 using the following command:
+```
+go install -v github.com/nicksnyder/go-i18n/v2/goi18n@v2.1.1
+```
+
+Then run the following command anytime new strings or translations are added:
 
 ```
 goi18n extract -outdir locales
-curl -s https://raw.githubusercontent.com/automuteus/utils/main/locales/active.en.toml >> locales/active.en.toml
-sed -i 's/\\n/\\\\n/g' locales/active.en.toml
 ```
 
 # Self-Hosting
